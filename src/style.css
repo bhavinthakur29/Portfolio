@@ -741,3 +741,54 @@ button:focus {
 .fork-btn-inner::after {
   display: none !important;
 }
+
+.contact-section {
+  display: inline-block;
+  padding-top: 110px;
+  padding-bottom: 30px;
+  color: white;
+  max-width: 40%;
+  margin-bottom: 5.5rem;
+}
+
+.contact-form {
+  max-width: 75%;
+  margin-left: 2rem;
+  text-align: left;
+}
+
+.contact-form input, textarea {
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.contact-form label {
+  font-weight: 900;
+}
+
+@media (max-width: 600px) {
+
+  .contact-section {
+    display: block;
+    padding-top: 110px;
+    padding-bottom: 30px;
+    color: white;
+    margin-bottom: 5.5rem;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    margin-left: 0;
+    text-align: ;
+  }
+
+  .contact-form input,
+  textarea {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  .contact-form label {
+    font-weight: 900;
+  }
+}
