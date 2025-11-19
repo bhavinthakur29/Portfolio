@@ -1,0 +1,865 @@
+.home-container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: transparent;
+}
+
+/* LetterGlitch background - fixed position covering entire viewport */
+.home-container>div:last-child {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    z-index: 0 !important;
+    pointer-events: auto;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Blur the canvas inside LetterGlitch to focus on terminal */
+.home-container>div:last-child>canvas {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    opacity: 0.65;
+}
+
+/* Prevent scrollbar from affecting layout */
+@supports (width: 100dvw) {
+    .home-container>div:last-child {
+        width: 100dvw !important;
+        height: 100dvh !important;
+    }
+}
+
+/* Home content wrapper - positioned above LiquidEther */
+
+
+/* Allow interactive elements in content to receive pointer events */
+.home-content * {
+    pointer-events: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-container {
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        min-height: 100vh;
+    }
+}
+
+.home-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 900px;
+    max-width: 92vw;
+    max-height: 88vh;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(15, 15, 15, 0.85) 100%);
+    border: 1px solid rgba(97, 220, 163, 0.2);
+    border-radius: 8px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(97, 220, 163, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    pointer-events: none;
+    font-family: 'DejaVu Sans Mono', 'Liberation Mono', 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    /* Ensure terminal stands out with backdrop blur */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+/* Terminal Header - Konsole style */
+.terminal-header {
+    background: linear-gradient(180deg, #2d2d2d 0%, #1e1e1e 100%);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(97, 220, 163, 0.15);
+    flex-shrink: 0;
+    min-height: 32px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 6px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+
+
+}
+
+.control.close {
+    background-color: #ff5f56;
+}
+
+.control.minimize {
+    background-color: #9d4edd;
+}
+
+.control.maximize {
+    background-color: #ffbd2e;
+}
+
+.terminal-title {
+    color: #888888;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    transform-origin: center center;
+    transition: transform 0.1s ease;
+}
+
+.terminal-clock {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #888888;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    user-select: none;
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+}
+
+/* Terminal Body - Garuda/Konsole dark theme */
+.terminal-body {
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.85) 0%, rgba(0, 0, 0, 0.85) 100%);
+    padding: 24px 28px;
+    padding-bottom: 0;
+    min-height: 500px;
+    max-height: calc(88vh - 50px);
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.7;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-body-scrollable {
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #0d0d0d;
+    padding-right: 4px;
+}
+
+/* Custom scrollbar for terminal */
+.terminal-body-scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body-scrollable::-webkit-scrollbar-track {
+    background: #0d0d0d;
+}
+
+.terminal-body-scrollable::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 4px;
+}
+
+.terminal-body-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #00cc00;
+}
+
+/* Sysinfo container - Professional IT terminal style */
+.sysinfo-container {
+    margin-bottom: 20px;
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+}
+
+.sysinfo-header {
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #00ff00;
+}
+
+.sysinfo-title {
+    color: #00ff00;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.sysinfo-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 12px;
+}
+
+.sysinfo-section {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+.sysinfo-section:nth-child(1) {
+    border-left-color: #00ff00;
+    /* Green for SYSTEM */
+}
+
+.sysinfo-section:nth-child(2) {
+    border-left-color: #00aaff;
+    /* Blue for HARDWARE */
+}
+
+.sysinfo-section:nth-child(3) {
+    border-left-color: #ffaa00;
+    /* Orange for NETWORK */
+}
+
+.sysinfo-section:nth-child(4) {
+    border-left-color: #ff00aa;
+    /* Magenta for RUNTIME */
+}
+
+.sysinfo-category {
+    color: #888888;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.sysinfo-label {
+    color: #cccccc;
+    font-weight: 600;
+    margin-right: 8px;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.sysinfo-value {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+/* Color-coded values for different info types */
+.sysinfo-os {
+    color: #00ff00;
+    font-weight: 600;
+}
+
+.sysinfo-host {
+    color: #00aaff;
+}
+
+.sysinfo-user {
+    color: #ffaa00;
+    font-weight: 600;
+}
+
+.sysinfo-dir {
+    color: #ff00aa;
+}
+
+.sysinfo-cpu {
+    color: #00ffff;
+    font-weight: 600;
+}
+
+.sysinfo-gpu {
+    color: #ffaa00;
+}
+
+.sysinfo-memory {
+    color: #00ffaa;
+}
+
+.sysinfo-resolution {
+    color: #aa00ff;
+}
+
+.sysinfo-network {
+    color: #00ff00;
+    font-weight: 600;
+}
+
+.sysinfo-ip {
+    color: #00aaff;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+}
+
+.sysinfo-shell {
+    color: #ff00aa;
+    font-weight: 600;
+}
+
+.sysinfo-uptime {
+    color: #00ffff;
+}
+
+.sysinfo-time {
+    color: #ffaa00;
+    font-family: 'Courier New', monospace;
+}
+
+.sysinfo-battery {
+    color: #00ffaa;
+}
+
+/* Neofetch container (keeping for backward compatibility) */
+.neofetch-container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.neofetch-left {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.garuda-logo {
+    width: 250px;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 0 12px rgba(97, 220, 163, 0.4));
+}
+
+.neofetch-right {
+    flex: 1;
+}
+
+.neofetch-user {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+    text-underline-offset: 3px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.neofetch-label {
+    color: #ffffff;
+}
+
+.neofetch-info {
+    margin-bottom: 8px;
+}
+
+.info-line {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+    display: flex;
+    align-items: baseline;
+}
+
+.info-label {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.info-value {
+    color: #ffffff;
+}
+
+.color-palette {
+    display: flex;
+    gap: 2px;
+    margin-top: 8px;
+}
+
+.color-block {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border: 1px solid #333;
+}
+
+/* Terminal prompt line - Fish shell style */
+.terminal-prompt-line {
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.prompt-user {
+    color: red;
+    font-weight: 700;
+}
+
+.prompt-host {
+    color: #00ff00;
+    font-weight: 900;
+}
+
+.prompt-dir {
+    color: #00ff00;
+    font-weight: 900;
+}
+
+.prompt-lambda {
+    color: #ffffff;
+    margin: 0 4px;
+}
+
+.terminal-output {
+    color: #ffffff;
+    margin-bottom: 12px;
+    margin-top: 4px;
+    white-space: pre-wrap;
+    font-family: inherit;
+    line-height: 1.6;
+    padding-left: 4px;
+}
+
+/* Welcome Section */
+.welcome-section {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.welcome-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.garuda-logo-welcome {
+    width: 200px;
+    height: auto;
+    max-width: 200px;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 0 12px rgba(97, 220, 163, 0.4));
+    opacity: 0.9;
+}
+
+.terminal-title-large {
+    font-size: 56px;
+    font-weight: 900;
+    color: #00ff00;
+    text-shadow:
+        0 0 10px #00ff00,
+        0 0 20px #00ff00,
+        0 0 30px #00ff00,
+        2px 2px 0px rgba(255, 255, 255, 0.3);
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    font-family: 'Courier New', 'Monaco', monospace;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-stretch: condensed;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
+    text-rendering: optimizeSpeed;
+}
+
+.welcome-message {
+    color: #00ff00;
+    font-size: 18px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.welcome-instruction {
+    color: #888888;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.command-hint {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Terminal Output Box */
+.terminal-output-box {
+    border: 1px solid #555555;
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.output-box-title {
+    color: #ff6b35;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.output-box-title.error-title {
+    color: #ff6b6b;
+}
+
+.error-output .output-box-content {
+    color: #ff9999;
+}
+
+.error-output .output-box-item {
+    color: #ffaaaa;
+}
+
+.output-box-items {
+    margin-bottom: 8px;
+}
+
+.output-box-item {
+    color: #e0e0e0;
+    font-size: 14px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.command-arrow {
+    color: #ff6b35;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.command-name {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.command-desc {
+    color: #aaaaaa;
+}
+
+.output-box-content {
+    color: #e0e0e0;
+    white-space: pre-wrap;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.output-box-links {
+    color: #e0e0e0;
+    margin: 8px 0 4px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.output-link-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    transition: transform 0.2s ease;
+}
+
+.output-link-item:hover {
+    transform: translateX(4px);
+}
+
+.link-icon {
+    font-size: 14px;
+    width: 18px;
+    text-align: center;
+}
+
+.output-link {
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 8px currentColor;
+}
+
+.output-link:hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 3px;
+    filter: brightness(1.2);
+}
+
+.link-url {
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    margin-left: auto;
+    opacity: 0.7;
+}
+
+.output-box-footer {
+    color: #888888;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #333333;
+}
+
+.footer-link {
+    color: #58a6ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 6px rgba(88, 166, 255, 0.4);
+}
+
+.footer-link:hover {
+    color: #79c0ff;
+    text-decoration: underline;
+    text-decoration-color: #58a6ff;
+    text-underline-offset: 2px;
+    filter: brightness(1.2);
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.6);
+}
+
+.terminal-text {
+    color: #ffffff;
+}
+
+.terminal-command-block {
+    margin-bottom: 12px;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(0, 0, 0, 0.98) 100%);
+    padding: 8px;
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    margin-left: 4px;
+    caret-color: #ffffff;
+}
+
+.terminal-cursor-blink {
+    color: #00ff00;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    font-weight: bold;
+}
+
+.terminal-input::placeholder {
+    color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .home-content {
+        width: 95vw;
+        max-width: 700px;
+        max-height: 80vh;
+    }
+
+    .terminal-body {
+        padding: 16px 20px;
+        font-size: 14px;
+        min-height: 400px;
+        max-height: calc(80vh - 40px);
+    }
+
+    .terminal-title {
+        font-size: 12px;
+    }
+
+    .terminal-clock {
+        font-size: 11px;
+    }
+
+    .terminal-title-large {
+        font-size: 36px;
+        letter-spacing: 3px;
+    }
+
+    .welcome-message {
+        font-size: 16px;
+    }
+
+    .garuda-logo-welcome {
+        width: 150px;
+    }
+
+    .neofetch-container {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .garuda-logo {
+        width: 100px;
+    }
+
+    .info-line {
+        font-size: 11px;
+    }
+
+    .output-box-title {
+        font-size: 12px;
+    }
+
+    .sysinfo-content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .sysinfo-title {
+        font-size: 16px;
+    }
+
+    .output-link-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .link-url {
+        font-size: 11px;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-content {
+        width: 95vw;
+        max-height: 75vh;
+    }
+
+    .terminal-body {
+        padding: 12px 16px;
+        font-size: 13px;
+        min-height: 300px;
+        max-height: calc(75vh - 40px);
+    }
+
+    .terminal-title {
+        font-size: 11px;
+    }
+
+    .terminal-clock {
+        font-size: 10px;
+    }
+
+    .terminal-title-large {
+        font-size: 28px;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+
+    .welcome-message {
+        font-size: 14px;
+    }
+
+    .welcome-instruction {
+        font-size: 13px;
+    }
+
+    .garuda-logo-welcome {
+        width: 120px;
+    }
+
+    .output-link-item {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .link-url {
+        font-size: 10px;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 2px;
+    }
+
+    .sysinfo-content {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .sysinfo-title {
+        font-size: 14px;
+    }
+
+    .sysinfo-label {
+        min-width: 100px;
+        font-size: 13px;
+    }
+
+    .sysinfo-value {
+        font-size: 13px;
+    }
+
+    .neofetch-container {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .garuda-logo {
+        width: 80px;
+    }
+
+    .info-line {
+        font-size: 10px;
+    }
+
+    .neofetch-user {
+        font-size: 12px;
+    }
+
+    .output-box-title {
+        font-size: 11px;
+    }
+
+    .output-box-item {
+        font-size: 11px;
+    }
+}

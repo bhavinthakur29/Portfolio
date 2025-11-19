@@ -1,0 +1,139 @@
+{
+    "commands": {
+        "help": {
+            "output": "help",
+            "formatted": true,
+            "help": {
+                "title": ">_ Available Commands",
+                "items": [
+                    {
+                        "cmd": "about",
+                        "desc": "Displays information about me"
+                    },
+                    {
+                        "cmd": "contact",
+                        "desc": "Ways to reach me"
+                    },
+                    {
+                        "cmd": "projects",
+                        "desc": "List of featured projects"
+                    },
+                    {
+                        "cmd": "sysinfo",
+                        "desc": "System info (CLI style)"
+                    },
+                    {
+                        "cmd": "echo <text>",
+                        "desc": "Repeats what you type"
+                    },
+                    {
+                        "cmd": "clear",
+                        "desc": "Clear the terminal screen"
+                    },
+                    {
+                        "cmd": "exit",
+                        "desc": "Close the terminal tab"
+                    }
+                ],
+                "footer": "// Type a command and hit Enter to execute"
+            }
+        },
+        "about": {
+            "output": "about",
+            "formatted": true,
+            "formattedData": {
+                "title": ">_ About Me",
+                "content": "Hi there! You can call me Photron, a passionate developer\nbased in London, UK.\n\nI enjoy exploring web technologies, building Discord bots, and\ncontinuously learning new things. Currently, I'm working on\nprojects like GreenDiningUK, a web application promoting\nsustainable dining, and Stingg, a multi-utility Discord bot.\n\nI'm also diving into the world of Data Science, expanding my\nskills in data analysis, visualization, and machine learning."
+            }
+        },
+        "contact": {
+            "output": "contact",
+            "formatted": true,
+            "formattedData": {
+                "title": ">_ Contact Information",
+                "content": "Get in touch with me through these platforms:",
+                "links": [
+                    {
+                        "name": "GitHub",
+                        "url": "https://github.com/photron29",
+                        "color": "#58a6ff",
+                        "icon": "🐙"
+                    },
+                    {
+                        "name": "LinkedIn",
+                        "url": "https://www.linkedin.com/in/bhavinthakur/",
+                        "color": "#0077b5",
+                        "icon": "💼"
+                    },
+                    {
+                        "name": "Instagram",
+                        "url": "https://www.instagram.com/bhavinthakur29/",
+                        "color": "#E4405F",
+                        "icon": "📷"
+                    },
+                    {
+                        "name": "Discord",
+                        "url": "https://discord.com/users/527489750815342625",
+                        "color": "#5865F2",
+                        "icon": "💬"
+                    }
+                ],
+                "footer": "Feel free to reach out for collaborations, opportunities,\nor just to say hello!"
+            }
+        },
+        "projects": {
+            "output": "projects",
+            "formatted": true,
+            "formattedData": {
+                "title": ">_ Featured Projects",
+                "items": [
+                    {
+                        "name": "🌱 GreenDiningUK",
+                        "desc": "A web application promoting sustainable dining choices in the UK"
+                    },
+                    {
+                        "name": "🎮 Stingg-Discord",
+                        "desc": "A multi-utility and moderation bot for Discord"
+                    },
+                    {
+                        "name": "📊 Portfolio Website",
+                        "desc": "Interactive terminal-based portfolio (Current)"
+                    }
+                ],
+                "footer": {
+                    "text": "View more projects at:",
+                    "link": {
+                        "text": "github.com/photron29",
+                        "url": "https://github.com/photron29"
+                    }
+                }
+            }
+        },
+        "sysinfo": {
+            "output": "sysinfo",
+            "formatted": true
+        },
+        "echo": {
+            "output": "echo",
+            "formatted": true,
+            "hasArgs": true
+        },
+        "skills": {
+            "output": "Technical Skills:\n\nLanguages:     JavaScript, Python\nFrontend:      React, HTML5, CSS3\nDiscord:       discord.js, discord.py\nAnalytics:  numpy, pandas, matplotlib, seaborn\nTools:         Git, Linux, Vite\nWeb:           Web Applications, Sustainable Tech Solutions",
+            "formatted": false
+        },
+        "experience": {
+            "output": "Experience & Activities:\n\n🖊️ Writing Code | Freelance | Present\n- Building web applications and Discord bots\n- Exploring Data Science and Machine Learning\n- Contributing to open source projects\n\n📚 Continuous Learning\n- Expanding skills in Data Science\n- Learning data analysis and visualization\n- Exploring machine learning techniques\n\n🌐 Open Source\n- 55+ repositories on GitHub\n- Active contributor to various projects\n- Building tools for the community",
+            "formatted": false
+        },
+        "clear": {
+            "output": null,
+            "clear": true
+        },
+        "exit": {
+            "output": "exit",
+            "formatted": false,
+            "action": "closeTab"
+        }
+    }
+}
