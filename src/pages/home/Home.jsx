@@ -118,7 +118,7 @@ export default function Home() {
             battery: battery,
             resolution: `${screenWidth}x${screenHeight}`,
             host: window.location.hostname || 'localhost',
-            user: 'photron',
+            user: 'root',
             currentDir: '~/home',
             time: `${dateString}, ${timeString}`,
             network: networkStatus,
@@ -413,7 +413,7 @@ export default function Home() {
                                         </div>
                                         <div className="neofetch-right">
                                             <div className="neofetch-user">
-                                                <span className="neofetch-label">photron</span>@<span className="neofetch-label">photron</span>
+                                                <span className="neofetch-label">root</span>@<span className="neofetch-label">photron</span>
                                             </div>
                                             <div className="neofetch-info">
                                                 <div className="info-line">
@@ -452,7 +452,7 @@ export default function Home() {
                             return (
                                 <div key={index} className="terminal-command-block">
                                     <div className="terminal-prompt-line">
-                                        <span className="prompt-user">photron</span>@<span className="prompt-host">photron</span>:<span className="prompt-dir">~</span>$ <span className="terminal-text">{item.command}</span>
+                                        <span className="prompt-user">root</span>@<span className="prompt-host">photron</span>:<span className="prompt-dir">~</span>$ <span className="terminal-text">{item.command}</span>
                                     </div>
                                     {item.formatted ? (
                                         <div className={`terminal-output-box ${item.formatted.title && item.formatted.title.includes('Command Not Found') ? 'error-output' : ''}`}>
@@ -590,7 +590,7 @@ export default function Home() {
                         })}
                     </div>
                     <div className="terminal-prompt-line terminal-input-line">
-                        <span className="prompt-user">photron</span>@<span className="prompt-host">photron</span>:<span className="prompt-dir">~</span>$
+                        <span className="prompt-user">root</span>@<span className="prompt-host">photron</span>:<span className="prompt-dir">~</span>$
                         <input
                             ref={inputRef}
                             type="text"
