@@ -43,7 +43,7 @@
             "formatted": true,
             "formattedData": {
                 "title": ">_ About Me",
-                "content": "Hi there! You can call me Photron, a passionate developer\nbased in London, UK.\n\nI enjoy exploring web technologies, building Discord bots, and\ncontinuously learning new things. Currently, I'm working on\nprojects like GreenDiningUK, a web application promoting\nsustainable dining, and Stingg, a multi-utility Discord bot.\n\nI'm also diving into the world of Data Science, expanding my\nskills in data analysis, visualization, and machine learning."
+                "content": "I'm Photron — full-time Data Science student in the UK.\nI develop for passion: web apps, Discord bots (Trupe), and\ndata/ML projects. Currently into GreenDiningUK, Trupe, and\nanalysis & visualization."
             }
         },
         "contact": {
@@ -54,8 +54,14 @@
                 "content": "Get in touch with me through these platforms:",
                 "links": [
                     {
+                        "name": "Website",
+                        "url": "https://photron.pages.dev/",
+                        "color": "#00C7B7",
+                        "icon": "🌐"
+                    },
+                    {
                         "name": "GitHub",
-                        "url": "https://github.com/photron29",
+                        "url": "https://github.com/bhavinthakur29",
                         "color": "#58a6ff",
                         "icon": "🐙"
                     },
@@ -88,23 +94,27 @@
                 "title": ">_ Featured Projects",
                 "items": [
                     {
+                        "name": "📊 CLV Prediction",
+                        "desc": "Customer Lifetime Value — stats + ML (Random Forest)"
+                    },
+                    {
+                        "name": "🎵 Trupe",
+                        "desc": "Discord music bot I actively maintain"
+                    },
+                    {
                         "name": "🌱 GreenDiningUK",
-                        "desc": "A web application promoting sustainable dining choices in the UK"
+                        "desc": "Web app promoting sustainable dining in the UK"
                     },
                     {
-                        "name": "🎮 Stingg-Discord",
-                        "desc": "A multi-utility and moderation bot for Discord"
-                    },
-                    {
-                        "name": "📊 Portfolio Website",
-                        "desc": "Interactive terminal-based portfolio (Current)"
+                        "name": "📄 This portfolio",
+                        "desc": "Terminal-style site you're on now"
                     }
                 ],
                 "footer": {
-                    "text": "View more projects at:",
+                    "text": "More at:",
                     "link": {
-                        "text": "github.com/photron29",
-                        "url": "https://github.com/photron29"
+                        "text": "github.com/bhavinthakur29",
+                        "url": "https://github.com/bhavinthakur29"
                     }
                 }
             }

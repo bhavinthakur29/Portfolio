@@ -390,6 +390,14 @@ export default function Home() {
                                         <div className="welcome-instruction">
                                             Type <span className="command-hint">about</span> or <span className="command-hint">help</span> to begin.
                                         </div>
+                                        <a
+                                            href="https://github.com/bhavinthakur29"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="welcome-github-btn"
+                                        >
+                                            GitHub Profile
+                                        </a>
                                     </div>
                                 );
                             }
@@ -405,14 +413,14 @@ export default function Home() {
                                         </div>
                                         <div className="neofetch-right">
                                             <div className="neofetch-user">
-                                                <span className="neofetch-label">photron</span>@<span className="neofetch-label">portfolio</span>
+                                                <span className="neofetch-label">photron</span>@<span className="neofetch-label">photron</span>
                                             </div>
                                             <div className="neofetch-info">
                                                 <div className="info-line">
                                                     <span className="info-label">OS:</span> <span className="info-value">Portfolio Linux x86_64</span>
                                                 </div>
                                                 <div className="info-line">
-                                                    <span className="info-label">Host:</span> <span className="info-value">photron29.github.io</span>
+                                                    <span className="info-label">Host:</span> <span className="info-value">photron.pages.dev</span>
                                                 </div>
                                                 <div className="info-line">
                                                     <span className="info-label">Shell:</span> <span className="info-value">fish 3.6.1</span>
@@ -421,7 +429,7 @@ export default function Home() {
                                                     <span className="info-label">Terminal:</span> <span className="info-value">konsole 23.8.2</span>
                                                 </div>
                                                 <div className="info-line">
-                                                    <span className="info-label">Repos:</span> <span className="info-value">55</span>
+                                                    <span className="info-label">Repos:</span> <span className="info-value">59</span>
                                                 </div>
                                                 <div className="info-line">
                                                     <span className="info-label">Location:</span> <span className="info-value">London, UK</span>
@@ -444,7 +452,7 @@ export default function Home() {
                             return (
                                 <div key={index} className="terminal-command-block">
                                     <div className="terminal-prompt-line">
-                                        <span className="prompt-user">photron</span>@<span className="prompt-host">portfolio</span>:<span className="prompt-dir">~</span>$ <span className="terminal-text">{item.command}</span>
+                                        <span className="prompt-user">photron</span>@<span className="prompt-host">photron</span>:<span className="prompt-dir">~</span>$ <span className="terminal-text">{item.command}</span>
                                     </div>
                                     {item.formatted ? (
                                         <div className={`terminal-output-box ${item.formatted.title && item.formatted.title.includes('Command Not Found') ? 'error-output' : ''}`}>
@@ -582,7 +590,7 @@ export default function Home() {
                         })}
                     </div>
                     <div className="terminal-prompt-line terminal-input-line">
-                        <span className="prompt-user">photron</span>@<span className="prompt-host">portfolio</span>:<span className="prompt-dir">~</span>$
+                        <span className="prompt-user">photron</span>@<span className="prompt-host">photron</span>:<span className="prompt-dir">~</span>$
                         <input
                             ref={inputRef}
                             type="text"
@@ -595,6 +603,18 @@ export default function Home() {
                             placeholder="type a command..."
                         />
                         <span className="terminal-cursor-blink">█</span>
+                        <button
+                            type="button"
+                            className="terminal-send-btn"
+                            onClick={() => {
+                                handleCommand(currentCommand);
+                                setCurrentCommand('');
+                                setHistoryIndex(-1);
+                            }}
+                            aria-label="Send command"
+                        >
+                            Send
+                        </button>
                     </div>
                 </div>
             </div>
