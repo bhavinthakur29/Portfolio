@@ -23,6 +23,10 @@
                         "desc": "System info (CLI style)"
                     },
                     {
+                        "cmd": "gui",
+                        "desc": "Load the graphical portfolio"
+                    },
+                    {
                         "cmd": "echo <text>",
                         "desc": "Repeats what you type"
                     },
@@ -122,6 +126,11 @@
         "sysinfo": {
             "output": "sysinfo",
             "formatted": true
+        },
+        "gui": {
+            "output": "Loading gui...",
+            "formatted": false,
+            "action": "loadGui"
         },
         "echo": {
             "output": "echo",

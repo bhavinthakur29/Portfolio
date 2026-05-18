@@ -1,0 +1,205 @@
+/* --- Core Reset & Cursor Control --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #ededed;
+    cursor: none !important;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom Scrollbar for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7B2FFF;
+}
+
+/* Accessibility: Focus states */
+a:focus-visible,
+button:focus-visible,
+.interactive:focus-visible {
+    outline: 2px dashed #00FFCC;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Ensure all interactives hide system cursor */
+a,
+button,
+.interactive,
+.glass-card,
+img,
+svg {
+    cursor: none !important;
+}
+
+/* --- Custom Cursor Style --- */
+.cursor {
+    width: 10px;
+    height: 10px;
+    background-color: #00FFCC;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    /* Added elastic easing for smoother, organic movement */
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background-color 0.2s ease,
+        border 0.2s ease,
+        box-shadow 0.2s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor.hovering {
+    transform: translate(-50%, -50%) scale(3.5);
+    background-color: rgba(123, 47, 255, 0.1);
+    border: 1px solid #00FFCC;
+    mix-blend-mode: normal;
+    /* Removes difference mode on hover for cleaner UI */
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+/* --- Background Elements --- */
+.bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+#three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.3;
+    transition: opacity 0.5s ease;
+}
+
+/* --- Professional Layout & Glassmorphism --- */
+.glass-card {
+    /* Added subtle gradient to base card for depth */
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Inner glow ring */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    transition: box-shadow 0.4s ease;
+    pointer-events: none;
+}
+
+.glass-card:hover {
+    border-color: rgba(0, 255, 204, 0.4);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 35px -5px rgba(123, 47, 255, 0.25), 0 0 20px rgba(0, 255, 204, 0.1);
+}
+
+.glass-card:hover::before {
+    box-shadow: inset 0 0 0 1px rgba(123, 47, 255, 0.3);
+}
+
+/* Image hover interactions */
+img.rounded-full {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+}
+
+img.rounded-full:hover {
+    transform: scale(1.05) rotate(-3deg);
+    box-shadow: 0 0 35px rgba(123, 47, 255, 0.4);
+}
+
+/* --- Typography & Utilities --- */
+.font-display {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.text-accent {
+    color: #00FFCC;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    /* Added text glow */
+}
+
+.text-primary {
+    color: #7B2FFF;
+    text-shadow: 0 0 10px rgba(123, 47, 255, 0.2);
+    /* Added text glow */
+}
+
+.glow-hover {
+    transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-hover:hover {
+    box-shadow: 0 0 25px rgba(123, 47, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+::selection {
+    background: rgba(123, 47, 255, 0.4);
+    color: #ffffff;
+}
+
+/* --- Mobile Fallbacks --- */
+@media (max-width: 768px) {
+    .cursor {
+        display: none !important;
+    }
+
+    body,
+    a,
+    button,
+    .interactive,
+    .glass-card,
+    img,
+    svg {
+        cursor: auto !important;
+    }
+
+    .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+}

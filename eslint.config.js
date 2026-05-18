@@ -26,4 +26,16 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+  {
+    files: ['**/*.test.js'],
+    languageOptions: {
+      globals: globals.jest,
+    },
+  },
+  {
+    files: ['src/gui/**/*.js'],
+    rules: {
+      'no-undef': 'off',
+    },
+  },
 ])

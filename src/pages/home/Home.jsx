@@ -24,7 +24,6 @@ export default function Home() {
         const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         const screenWidth = window.screen.width;
         const screenHeight = window.screen.height;
-        const colorDepth = window.screen.colorDepth;
         const hardwareConcurrency = navigator.hardwareConcurrency || 'Unknown';
         const deviceMemory = navigator.deviceMemory ? `${navigator.deviceMemory} GB` : 'Unknown';
 
@@ -147,12 +146,13 @@ export default function Home() {
                     neofetch: true,
                     systemInfo: getSystemInfo()
                 };
-            case 'echo':
+            case 'echo': {
                 const echoText = fullCommand.replace(/^echo\s+/i, '');
                 return {
                     title: '>_ Echo',
                     content: echoText || '(empty)'
                 };
+            }
             default:
                 return null;
         }
@@ -262,6 +262,19 @@ export default function Home() {
 
         if (commandData) {
             // Handle special actions
+            if (commandData.action === 'loadGui') {
+                setCommandHistory(prev => [...prev, {
+                    type: 'command',
+                    command: cmd,
+                    output: commandData.output,
+                    formatted: false
+                }]);
+                setTimeout(() => {
+                    window.location.href = '/gui';
+                }, 600);
+                return;
+            }
+
             if (commandData.action === 'closeTab') {
                 setCommandHistory(prev => [...prev, {
                     type: 'command',
